@@ -1,0 +1,27 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 5rem);
+  grid-template-rows: repeat(3, 5rem);
+  gap: 0.5vw;
+  justify-content: center;
+  margin: 5rem;
+}
+
+.playbox {
+  border: 0.5vw solid #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: #eeff00;
+}
+.playbox:hover {
+  background-color: #f4ff5c;
+}
