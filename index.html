@@ -5,13 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <script src="index.js"></script>
+  <script src="index.js" defer></script>
 </head>
 <body>
 
 <h2>Tic Tac Toe</h2>
 
 <div id="board">
+  <div class="playbox" onclick="play(0)"></div>
   <div class="playbox" onclick="play(1)"></div>
   <div class="playbox" onclick="play(2)"></div>
   <div class="playbox" onclick="play(3)"></div>
@@ -20,7 +21,6 @@
   <div class="playbox" onclick="play(6)"></div>
   <div class="playbox" onclick="play(7)"></div>
   <div class="playbox" onclick="play(8)"></div>
-  <div class="playbox" onclick="play(9)"></div>
 </div>
 
 </body>
