@@ -1,4 +1,5 @@
 let symbol = "X"
+let winArr = []
 boardArr =[
     "0","1","2",
     "3","4","5", 
@@ -57,7 +58,9 @@ const place = (num)=>{
 const checkWin = (num)=>{
     console.log(num)
     let obj = WinObj[num]
-    console.log(obj)
+        for(let i =0;i<obj.length;i++){
+      console.log(obj[i])
+    }
 }
 
 const play = (num)=>{
@@ -82,3 +85,4 @@ const play = (num)=>{
 
 // NB zero index HTML
 const boardDiv = document.getElementById("board")
+
