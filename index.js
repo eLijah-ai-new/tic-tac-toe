@@ -6,7 +6,7 @@ boardArr =[
 
 ]
 pcArr = [
-    1,2,3,4,5,6,7,8
+    0,1,2,3,4,5,6,7,8
 ]
 // ran num based on arr leng. 
 
@@ -46,17 +46,31 @@ const WinObj={
     [8,0,4]]
 }
 
+const place = (num)=>{
+    boardArr[num]= symbol
+    let i = pcArr.indexOf(num)
+    pcArr.splice(i,1)
+    boardDiv.children[num].textContent=symbol
+    checkWin(num)
+}
+
+const checkWin = (num)=>{
+    console.log(num)
+    let obj = WinObj[num]
+    console.log(obj)
+}
+
 const play = (num)=>{
     console.log(num)
 
     if(boardArr[num]=="X"||boardArr[num]=="O"){
 
     }else{
+        place(num)
         // boardArr
         // paArr
         // boardDiv
     }
-    boardDiv.children[num].textContent="O"
 }
 // 0. Check whose turn it is.
 // 1. check if player can place.
