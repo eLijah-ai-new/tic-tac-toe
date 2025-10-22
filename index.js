@@ -70,10 +70,33 @@ const play = (num)=>{
 
     }else{
         place(num)
-        // boardArr
-        // paArr
-        // boardDiv
+
+         boardArr[num] = symbol
+
+         let i 
+
+         // not finished with this psrt
+        
     }
+
+     if(won){
+            alert(symbol + " wins!")
+            resetBoard()
+            return
+        }
+
+         if(pcArr.length==0){
+            alert("Draw!")
+          resetBoard()
+            return
+
+            if(symbol=="X"){
+            symbol="O"
+            pcTurn()
+        }else{
+            symbol="X"
+        }
+
 }
 // 0. Check whose turn it is.
 // 1. check if player can place.
@@ -85,4 +108,3 @@ const play = (num)=>{
 
 // NB zero index HTML
 const boardDiv = document.getElementById("board")
-
