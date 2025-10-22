@@ -52,15 +52,33 @@ const place = (num)=>{
     let i = pcArr.indexOf(num)
     pcArr.splice(i,1)
     boardDiv.children[num].textContent=symbol
+    
     checkWin(num)
 }
 
 const checkWin = (num)=>{
-    console.log(num)
+// Look at cyfer app
+  // let obj = WinObj[num]
+    // 0: [
+    // let currentArr = obj[i]
+    // [0,1,2
+    //  console.log(currentArr[j])
+    // ],
+    // [0,3,6],
+    // [0,4,8]],
     let obj = WinObj[num]
+    console.log(obj)
         for(let i =0;i<obj.length;i++){
-      console.log(obj[i])
+          let currentArr = obj[i]
+        for(let j = 0;j<currentArr.length;j++){
+          let currentCell = currentArr[j]
+          // boardArr[currentCell]
+          // if symbol maches
+          console.log(currentArr[j])
+        }  
     }
+    // check winArr. If winArr contains/includes "Lose"
+    // then game not over 
 }
 
 const play = (num)=>{
@@ -79,24 +97,26 @@ const play = (num)=>{
         
     }
 
-     if(won){
-            alert(symbol + " wins!")
-            resetBoard()
-            return
-        }
 
-         if(pcArr.length==0){
-            alert("Draw!")
-          resetBoard()
-            return
+    // check this whole part
+    //  if(won){
+    //         alert(symbol + " wins!")
+    //         resetBoard()
+    //         return
+    //     }
 
-            if(symbol=="X"){
-            symbol="O"
-            pcTurn()
-        }else{
-            symbol="X"
-        }
+    //      if(pcArr.length==0){
+    //         alert("Draw!")
+    //       resetBoard()
+    //         return
 
+    //         if(symbol=="X"){
+    //         symbol="O"
+    //         pcTurn()
+    //     }else{
+    //         symbol="X"
+    //     }
+    //   }
 }
 // 0. Check whose turn it is.
 // 1. check if player can place.
@@ -108,3 +128,4 @@ const play = (num)=>{
 
 // NB zero index HTML
 const boardDiv = document.getElementById("board")
+
