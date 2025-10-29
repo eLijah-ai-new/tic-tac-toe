@@ -1,15 +1,15 @@
+
+
 let symbol = "X"
 let winArr = []
-boardArr =[
-    "0","1","2",
-    "3","4","5", 
+boardArr = [   
+    "0","1","2",   
+    "3","4","5",   
     "6","7","8",
-
 ]
-pcArr = [
+pcArr = [   
     0,1,2,3,4,5,6,7,8
 ]
-// ran num based on arr leng. 
 
 const WinObj={
     0: [
@@ -47,85 +47,85 @@ const WinObj={
     [8,0,4]]
 }
 
+const boardDiv = document.getElementById("board")
+
 const place = (num)=>{
     boardArr[num]= symbol
     let i = pcArr.indexOf(num)
     pcArr.splice(i,1)
     boardDiv.children[num].textContent=symbol
-    
     checkWin(num)
 }
 
 const checkWin = (num)=>{
-// Look at cyfer app
-  // let obj = WinObj[num]
-    // 0: [
-    // let currentArr = obj[i]
-    // [0,1,2
-    //  console.log(currentArr[j])
-    // ],
-    // [0,3,6],
-    // [0,4,8]],
-    let obj = WinObj[num]
-    console.log(obj)
-        for(let i =0;i<obj.length;i++){
-          let currentArr = obj[i]
-        for(let j = 0;j<currentArr.length;j++){
-          let currentCell = currentArr[j]
-          // boardArr[currentCell]
-          // if symbol maches
-          console.log(currentArr[j])
-        }  
+ let obj = WinObj[num]
+ for(let i =0;i<obj.length;i++){
+ let currentArr = obj[i]
+  if(boardArr[currentArr[0]]==symbol && boardArr[currentArr[1]]==symbol && boardArr[currentArr[2]]==symbol){
+  winArr = currentArr.slice()
+  return true
+      }
     }
-    // check winArr. If winArr contains/includes "Lose"
-    // then game not over 
+    winArr = []
+    return false
 }
 
 const play = (num)=>{
     console.log(num)
-
     if(boardArr[num]=="X"||boardArr[num]=="O"){
-
     }else{
         place(num)
+        boardArr[num] = symbol
+        let i
 
-         boardArr[num] = symbol
+        if(checkWin(num)){
+            alert(symbol + " wins!")
+            resetBoard()
+            return
+        }
 
-         let i 
+        if(pcArr.length==0){
+            alert("Draw!")
+            resetBoard()
+            return
+        }
 
-         // not finished with this psrt
-        
+        if(symbol=="X"){
+            symbol="O"
+            pcTurn()
+        }else{
+            symbol="X"
+
+
+
+            // I need alert to pop up  after X or O has been plced.
+        }
     }
-
-
-    // check this whole part
-    //  if(won){
-    //         alert(symbol + " wins!")
-    //         resetBoard()
-    //         return
-    //     }
-
-    //      if(pcArr.length==0){
-    //         alert("Draw!")
-    //       resetBoard()
-    //         return
-
-    //         if(symbol=="X"){
-    //         symbol="O"
-    //         pcTurn()
-    //     }else{
-    //         symbol="X"
-    //     }
-    //   }
 }
-// 0. Check whose turn it is.
-// 1. check if player can place.
-// 2. update boardArr with x or o 
-// 3. Check if win
-// 4. if not win pc choice
-// random square select.
-// 5. run sequence from step 2.
 
-// NB zero index HTML
-const boardDiv = document.getElementById("board")
+const pcTurn = ()=>{
+    if(pcArr.length==0) return
+    let choice = pcArr[Math.floor(Math.random()*pcArr.length)]
+    place(choice)
+    if(checkWin(choice)){
+        alert("O wins!")
+        resetBoard()
+        return
+    }
+    if(pcArr.length==0){
+        alert("Draw!")
+        resetBoard()
+        return
+    }
+    symbol = "X"
+}
 
+const resetBoard = ()=>{
+    for(let e=0; e<9; e++){
+        boardArr[e] = e
+        pcArr[e] = e
+        boardDiv.children[e].textContent = ""
+    }
+    winArr = []
+    symbol = "X"
+  }
