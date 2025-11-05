@@ -49,6 +49,33 @@ const WinObj={
 
 const boardDiv = document.getElementById("board")
 
+const modal = document.getElementById("myModal")
+const modalText = document.getElementById("myModalText")
+const span = document.getElementsByClassName("close")[0]
+
+
+const showModal = (text) => {
+    modalText.textContent = text
+    modal.style.display ="block"
+
+    setTimeout(() => {
+        modal.style.display = "none"
+        resetBoard()
+    }, 1500)
+
+}
+span.onclick= () => {
+    modal.style.display = "none"
+    resetBoard()
+}
+
+window.onclick = (event) => {
+    if (event.target ==modal) {
+        modal.style.display = "none"
+        resetBoard()
+    }
+}
+
 const place = (num)=>{
     boardArr[num]= symbol
     let i = pcArr.indexOf(num)
@@ -76,17 +103,14 @@ const play = (num)=>{
     }else{
         place(num)
         boardArr[num] = symbol
-        let i
 
         if(checkWin(num)){
-            alert(symbol + " wins!")
-            resetBoard()
+            showModal(symbol + " Wins!")
             return
         }
 
         if(pcArr.length==0){
-            alert("Draw!")
-            resetBoard()
+            showModal("Draw!")
             return
         }
 
@@ -95,10 +119,6 @@ const play = (num)=>{
             pcTurn()
         }else{
             symbol="X"
-
-
-
-            // I need alert to pop up  after X or O has been plced.
         }
     }
 }
@@ -107,14 +127,13 @@ const pcTurn = ()=>{
     if(pcArr.length==0) return
     let choice = pcArr[Math.floor(Math.random()*pcArr.length)]
     place(choice)
+
     if(checkWin(choice)){
-        alert("O wins!")
-        resetBoard()
+        showModal("O wins!")
         return
     }
     if(pcArr.length==0){
-        alert("Draw!")
-        resetBoard()
+        showModal("Draw!")
         return
     }
     symbol = "X"
