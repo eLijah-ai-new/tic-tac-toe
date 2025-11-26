@@ -1,8 +1,7 @@
-
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  background-color: rgb(255, 255, 255);
+  background-color:#fafafa;
 }
 
 #board {
@@ -15,7 +14,7 @@ body {
 }
 
 .playbox {
-  border: 0.5vw solid #000;
+  border: 0.5vw solid #050505;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,7 +34,7 @@ z-index: 10;
 
 width: 100vw;
 height: 100vw;
-background-color: rgba(47, 0, 255, 1);
+background-color:#fafafaad;
 text-align: center;
 }
 
@@ -47,9 +46,25 @@ text-align: center;
   min-width: 40vw;
 }
 
-.close {
-  float: right;
-  font-size: 4vw;
+#closeBtn {
+  background-color: #eeff00;
+  margin-top: 3vw;
+  font-size: 3vw;
+  padding: 3vw;
   cursor: pointer;
 
+}
+#closeBtn:hover{
+  background-color: #f4ff5c;
+}
+
+#restartBtn {
+  background-color: #eeff00;
+  margin-top: 3vw;
+  padding: 3vw;
+  font-size: 3vw;
+  cursor: pointer;
+}
+#restartBtn:hover{
+  background-color: #f4ff5c;
 }
