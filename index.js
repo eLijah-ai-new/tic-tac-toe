@@ -51,30 +51,30 @@ const boardDiv = document.getElementById("board")
 
 const modal = document.getElementById("myModal")
 const modalText = document.getElementById("myModalText")
-const span = document.getElementsByClassName("close")[0]
+const closeBtn = document.getElementById("closeBtn");
+const restartBtn = document.getElementById("restartBtn")
 
 
 const showModal = (text) => {
     modalText.textContent = text
-    modal.style.display ="block"
-
     setTimeout(() => {
-        modal.style.display = "none"
-        // Should be based onb user choice.
-        resetBoard()
-    }, 15000)
+    modal.style.display ="block"
+    }, 400)
 
 }
-span.onclick= () => {
+closeBtn.onclick= () => {
     modal.style.display = "none"
-    resetBoard()
 }
 
 window.onclick = (event) => {
-    if (event.target ==modal) {
+    if (event.target == modal) {
         modal.style.display = "none"
-        resetBoard()
     }
+}
+
+restartBtn.onclick = () => {
+    resetBoard()
+    modal.style.display = "none"
 }
 
 const place = (num)=>{
@@ -104,7 +104,7 @@ const play = (num)=>{
     }else{
         place(num)
         boardArr[num] = symbol
-// 
+
         if(checkWin(num)){
             showModal(symbol + " Wins!")
             return
@@ -114,8 +114,6 @@ const play = (num)=>{
             showModal("Draw!")
             return
         }
-// Put in seperate function and call as needed
-        // 
 
         if(symbol=="X"){
             symbol="O"
@@ -131,7 +129,6 @@ const pcTurn = ()=>{
     let choice = pcArr[Math.floor(Math.random()*pcArr.length)]
     place(choice)
 
-    // 
     if(checkWin(choice)){
         showModal("O wins!")
         return
@@ -140,8 +137,6 @@ const pcTurn = ()=>{
         showModal("Draw!")
         return
     }
-// Put in seperate function and call as needed
-    // 
     symbol = "X"
 }
 
@@ -154,9 +149,3 @@ const resetBoard = ()=>{
     winArr = []
     symbol = "X"
   }
-
-
-//  Board should not reset instantly
-//  Have user decide between new game or save.
-// Make reset btn work.
-// Keep score of wins loses and draws.
